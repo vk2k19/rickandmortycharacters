@@ -1,11 +1,11 @@
-import { getData, getAllCharachters } from './fetchUtils';
+import { getData, getAllCharacters } from './fetchUtils';
 import TYPES from "./types";
 
 export const getCharacters = () => dispatch => {
   getData()
     .then(res => {
       if (res.info && res.info.count) {
-        return getAllCharachters(res.info.count);
+        return getAllCharacters(res.info.count);
       } else {
         throw Error("unable to get data try after some time");
       }

@@ -5,7 +5,7 @@ async function getData() {
   return data.json();
 };
 
-async function getAllCharachters(totalCharacters = 0) {
+async function getAllCharacters(totalCharacters = 0) {
   if(totalCharacters > 0) {
     const characterList = [...Array(totalCharacters)].map((_, i) => i + 1).join(',');
     const allCharacter = await fetch(`https://rickandmortyapi.com/api/character/${characterList}`);
@@ -15,6 +15,6 @@ async function getAllCharachters(totalCharacters = 0) {
 };
 
 export {
-  getAllCharachters,
+  getAllCharacters,
   getData
 };
