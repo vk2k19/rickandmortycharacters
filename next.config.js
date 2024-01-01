@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
 	reactStrictMode: true,
 	basePath: '',
@@ -8,7 +9,7 @@ const nextConfig = {
 	  	deviceSizes: [320, 375, 480, 768, 1024, 1500],
 	  	dangerouslyAllowSVG: true,
 	  	remotePatterns: [{
-			   protocol: 'https',
+			protocol: 'https',
 		   	hostname: 'rickandmortyapi.com',
 		   	port: '',
 		   	pathname: '/**',
@@ -16,5 +17,5 @@ const nextConfig = {
 		unoptimized: true
 	},
 }
-  
-export default nextConfig
+
+module.exports = nextConfig
