@@ -1,17 +1,10 @@
 import React from "react";
-import { mount } from "enzyme";
-import createMockStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import SearchReults from "../../src/components/searchResults";
-import mockData from "../../src/data/mocks/characters.json";
-import filterConfig from "../../src/data/filterConfig.json";
-import Results from "../../src/components/searchResults/results";
-import Card from '../../src/components/core/card';
-
+import SearchReults from "@/app/components/searchResults";
+import mockData from "@/app/data/mocks/characters.json";
+import filterConfig from "@/app/data/filterConfig.json";
+import { render, waitFor } from "@testing-library/react";
+import { Providers } from "@/lib/providers";
 describe("App test", () => {
-  let appWrapper;
-  const mockStore = createMockStore([thunk]);
   const initialState = {
     search: {
       name: '',
@@ -20,70 +13,62 @@ describe("App test", () => {
       results: []
     }
   };
-  let store;
-
-  beforeEach(() => {
-    store = mockStore(initialState);
-    appWrapper = mount(
-      <Provider store={store}>
-        <SearchReults />
-      </Provider>
-    );
-  });
-
-  afterEach(() => {
-    appWrapper.unmount();
-  });
 
   test("renders without crashing", () => {
+    const appWrapper = render(
+      <Providers preloadedState={initialState}>
+        <SearchReults />
+      </Providers>
+    );
     expect(appWrapper).not.toBe(null);
   });
 
   test("does not render results", () => {
-    expect(appWrapper.find(Results).length).toEqual(0);
+    const appWrapper = render(
+      <Providers preloadedState={initialState}>
+        <SearchReults />
+      </Providers>
+    );
+    expect(appWrapper.queryByTestId('search-results')).toBeNull();
   });
 
   test("renders provided results", () => {
-    store = mockStore({ search: { ...initialState.search, results: mockData }});
-    appWrapper = mount(
-      <Provider store={store}>
+    const appWrapper = render(
+      <Providers preloadedState={{ search: { ...initialState.search, results: mockData }}}>
         <SearchReults />
-      </Provider>
+      </Providers>
     );
 
-    expect(appWrapper.find(Results).length).toEqual(1);
+    waitFor(() => expect(appWrapper.getByTestId('search-results').length).toEqual(1));
   });
 
   test("Results renders all cards", () => {
-    store = mockStore({ search: { ...initialState.search, results: mockData, filters: [] }});
-    appWrapper = mount(
-      <Provider store={store}>
-        <Results />
-      </Provider>
+    const appWrapper = render(
+      <Providers preloadedState={{ search: { ...initialState.search, results: mockData, filters: [] }}}>
+        <SearchReults />
+      </Providers>
     );
 
-    expect(appWrapper.find(Card).length).toEqual(6);
+    waitFor(() =>expect(appWrapper.getByTestId('card').length).toEqual(6));
   });
 
   test("Results renders cards", () => {
-    store = mockStore({ search: { ...initialState.search, results: mockData }});
-    appWrapper = mount(
-      <Provider store={store}>
-        <Results />
-      </Provider>
+    const appWrapper = render(
+      <Providers preloadedState={{ search: { ...initialState.search, results: mockData }}}>
+        <SearchReults />
+      </Providers>
     );
 
-    expect(appWrapper.find(Card).length).toEqual(1);
+    waitFor(() => expect(appWrapper.getByTestId('card').length).toEqual(1));
   });
 
   test("renders filtered result based on name", () => {
-    store = mockStore({ search: { ...initialState.search, results: mockData, name: 'test' }});
-    appWrapper = mount(
-      <Provider store={store}>
-        <Results />
-      </Provider>
+    const appWrapper = render(
+      <Providers preloadedState={{ search: {...initialState.search, results: mockData, name: 'test'} }}>
+        <SearchReults />
+      </Providers>
     );
 
-    expect(appWrapper.find(Card).length).toEqual(0);
+    expect(appWrapper.queryByTestId('card')).toBeNull();
   });
 });

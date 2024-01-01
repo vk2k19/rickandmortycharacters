@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./*"] },
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "ESNEXT",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/redux/slices/thunks.js", "lib/redux/rootReducer.js", "lib/redux/middleware.js", "lib/redux/index.js", "lib/redux/createAppAsyncThunk.js", "lib/providers.jsx", "app/page.jsx", "app/layout.jsx", "app/icon/page.jsx", "app/api/sort-options/route.js", "app/api/filters/route.js", "lib/redux/store.js"],
+  "exclude": ["node_modules"]
+}

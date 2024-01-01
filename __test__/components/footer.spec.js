@@ -1,13 +1,10 @@
 import React from "react";
-import { mount } from "enzyme";
-import createMockStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import Footer from "../../src/components/footer";
+import { Providers } from "@/lib/providers";
+import Footer from "@/app/components/Footer";
+import { render } from "@testing-library/react";
 
 describe("App test", () => {
   let appWrapper;
-  const mockStore = createMockStore([thunk]);
   const initialState = {
     search: {
       name: '',
@@ -16,14 +13,12 @@ describe("App test", () => {
       results: []
     }
   };
-  let store;
 
   beforeEach(() => {
-    store = mockStore(initialState);
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={initialState}>
         <Footer />
-      </Provider>
+      </Providers>
     );
   });
 
