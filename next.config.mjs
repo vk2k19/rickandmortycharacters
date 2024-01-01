@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	basePath: '',
+	distDir: 'dist',
 	output: 'export',
 	images: {
 	  	deviceSizes: [320, 375, 480, 768, 1024, 1500],
@@ -11,6 +13,7 @@ const nextConfig = {
 		   	port: '',
 		   	pathname: '/**',
 	  	}],
+		unoptimized: true
 	},
 }
   
