@@ -21,8 +21,7 @@ const Filter = () => {
         <h2 className="col-xs-10 col-md-12">Filters</h2>
         <button className="col-xs-2 hidden-md hidden-lg" onClick={() => setHidden(!isHidden)}>
           <Image
-            src={`/rickandmortycharacters
-/assets/images/svgs/${isHidden ? 'plus' : 'minus'}-circle-solid.svg`}
+            src={`/rickandmortycharacters/assets/images/svgs/${isHidden ? 'plus' : 'minus'}-circle-solid.svg`}
             alt={isHidden ? 'show filter options' : 'hide filter options'} 
             width={32} height={32} 
           />
