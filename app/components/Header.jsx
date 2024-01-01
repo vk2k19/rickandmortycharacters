@@ -4,8 +4,8 @@ export default function Header () {
   return <header className="header" data-testid="header">
     <div className="flex">
       <div className="img">
-        <img src="/assets/images/Rick.png" width="32" height="64" alt="" className="rick"/>
-        <img src="/assets/images/Morty.png" width="32" height="64" alt="" className="morty"/>
+        <img src="/rickandmortycharacters/assets/images/Rick.png" width="32" height="64" alt="" className="rick"/>
+        <img src="/rickandmortycharacters/assets/images/Morty.png" width="32" height="64" alt="" className="morty"/>
       </div>
       <h1>{process.env.NEXT_PUBLIC_APP_NAME}</h1>
     </div>
