@@ -32,7 +32,7 @@ const Results = () => {
         padding: 3.5px 0;
         display: flex;
         flex-wrap: wrap;
-        background-image: url('/assets/images/double-bubble-dark.png')
+        background-image: url('/rickandmortycharacters/assets/images/double-bubble-dark.png')
       }
       .card-wrapper {
         padding: 3.5px;
