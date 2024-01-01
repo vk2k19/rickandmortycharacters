@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+	output: 'export',
 	reactStrictMode: true,
 	basePath: '',
 	distDir: 'dist',
-	output: 'export',
 	images: {
 	  	deviceSizes: [320, 375, 480, 768, 1024, 1500],
 	  	dangerouslyAllowSVG: true,
