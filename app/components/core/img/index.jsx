@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Img = props => {
   // add lazy loading
-  const image = props.image ? props.image : '/assets/images/fallback-profile.png';
+  const image = props.image ? props.image : '/rickandmortycharacters/assets/images/fallback-profile.png';
 
   return <>
     <Image src={image} alt={props.alt} className="img-responsive" width={100} height={100} data-testid="img-responsive"/>
