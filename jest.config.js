@@ -1,6 +1,10 @@
+const { pathsToModuleNameMapper } = require('ts-jest');
+const { compilerOptions } = require('./tsconfig');
+
 module.exports = {
+  testEnvironment: 'jsdom',
   collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
+    'app/**/*.{js,jsx}',
     '!**/node_modules/**',
   ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
@@ -14,6 +18,7 @@ module.exports = {
     '^.+\\.module\\.(css)$',
   ],
   moduleNameMapper: {
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' } ),
     '^.+\\.module\\.(css)$': 'identity-obj-proxy',
   },
 }

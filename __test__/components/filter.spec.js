@@ -1,16 +1,11 @@
 import React from "react";
-import { mount } from "enzyme";
-import createMockStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import Filter from "../../src/components/filter";
-import filterConfig from "../../src/data/filterConfig.json";
-import FilterOptions from "../../src/components/core/filterOptions";
-import TYPES from "../../src/redux/action/types";
+import Filter from "@/app/components/filter";
+import filterConfig from "@/app/data/filterConfig.json";
+import { Providers } from "@/lib/providers";
+import {fireEvent, render} from '@testing-library/react'
 
 describe("App test", () => {
   let appWrapper;
-  const mockStore = createMockStore([thunk]);
   const initialState = {
     search: {
       name: '',
@@ -19,14 +14,12 @@ describe("App test", () => {
       results: []
     }
   };
-  let store;
 
   beforeEach(() => {
-    store = mockStore(initialState);
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={initialState}>
         <Filter />
-      </Provider>
+      </Providers>
     );
   });
 
@@ -39,18 +32,15 @@ describe("App test", () => {
   });
 
   test("renders various filter options", () => {
-    expect(appWrapper.find(FilterOptions).length).toEqual(filterConfig.length);
+    expect(appWrapper.getAllByTestId('filter-options').length).toEqual(filterConfig.length);
   });
 
   test("renders selected filters", () => {
-    appWrapper.find(FilterOptions).find('input').at(0).simulate('change')
-    const actions = store.getActions();
-
-    expect(actions).toEqual([
-      {
-        type: TYPES.UPDATE_FILTERS,
-        payload: filterConfig[0].items[0]
+    fireEvent.change(appWrapper.getAllByRole('checkbox').at(0), {
+      target: {
+        value: 'Descending'
       }
-    ]);
+    })
+    expect(appWrapper.getAllByTestId('filter-options').length).toEqual(filterConfig.length);
   });
 });

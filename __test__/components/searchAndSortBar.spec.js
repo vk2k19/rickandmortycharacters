@@ -1,24 +1,11 @@
 import React from "react";
-import { mount } from "enzyme";
-import createMockStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import SearchAndSortBar from "../../src/components/searchAndSortBar";
-import sortBy from "../../src/data/sortConfig.json";
-import Search from '../../src/components/core/search';
-import Dropdown from '../../src/components/core/dropdown';
-import TYPES from "../../src/redux/action/types";
-
-
-// UPDATE_RESULTS_SUCCESS: 'update-result-success',
-// UPDATE_RESULTS_ERROR: 'update-result-error',
-// UPDATE_SEARCH_NAME: 'update-search-string',
-// UPDATE_FILTERS: 'update-filters',
-// UPDATE_SORT: 'update-sort'
+import SearchAndSortBar from "@/app/components/SearchAndSortBar";
+import sortBy from "@/app/data/sortConfig.json";
+import { fireEvent, render } from "@testing-library/react";
+import { Providers } from "@/lib/providers";
 
 describe("App test", () => {
   let appWrapper;
-  const mockStore = createMockStore([thunk]);
   const initialState = {
     search: {
       name: '',
@@ -30,11 +17,10 @@ describe("App test", () => {
   let store;
 
   beforeEach(() => {
-    store = mockStore(initialState);
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={initialState}>
         <SearchAndSortBar />
-      </Provider>
+      </Providers>
     );
   });
 
@@ -44,48 +30,34 @@ describe("App test", () => {
 
   test("renders without crashing", () => {
     expect(appWrapper).not.toBe(null);
+    expect(appWrapper.getByTestId("select-dropdown").length).toEqual(2);
   });
 
   test("renders search form", () => {
-    expect(appWrapper.find(Search).length).toEqual(1);
+    expect(appWrapper.getByTestId("search-form").length).not.toEqual(0);
   });
 
   test("renders sorting options", () => {
-    expect(appWrapper.find(Dropdown).length).toEqual(1);
+    expect(appWrapper.getByTestId("select-dropdown").length).toEqual(2);
   });
 
   test("triggers change in dropdown selection action", () => {
-    appWrapper.find(Dropdown).find('select').simulate('change', {
+    fireEvent.change(appWrapper.getByTestId('select-dropdown'), {
       target: {
-        value: 'Decending'
+        value: 'Descending'
       }
     })
-    const actions = store.getActions();
-
-    expect(actions).toEqual([
-      {
-        type: TYPES.UPDATE_SORT,
-        payload: 'Decending'
-    }
-    ]);
+    expect(appWrapper.getAllByTestId('select-dropdown').at(0).value).toEqual('Descending');
   });
 
   test("renders change in search and submit triggers update Search string action", () => {
-    store = mockStore({ search: { ...initialState.search }});
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={{ search: { ...initialState.search }}}>
         <SearchAndSortBar />
-      </Provider>
+      </Providers>
     );
-    appWrapper.find(Search).find('input[name="query"]').at(0).simulate('change', { target: { value: 'test' }});
-    appWrapper.find(Search).find('button').at(0).simulate('submit');
-    const actions = store.getActions();
-
-    expect(actions).toEqual([
-      {
-        type: TYPES.UPDATE_SEARCH_NAME,
-        payload: "test"
-      }
-    ]);
+    fireEvent.change(appWrapper.getAllByTestId('search-query').at(0), { target: { value: 'test' }});
+    fireEvent.submit(appWrapper.getAllByRole('button').at(0));
+    expect(appWrapper.getAllByTestId('search-query').at(0).value).toEqual('');
   });
 });

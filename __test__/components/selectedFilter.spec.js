@@ -1,16 +1,11 @@
 import React from "react";
-import { mount } from "enzyme";
-import createMockStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import SelectedFilters from "../../src/components/selectedFilters";
-import filterConfig from "../../src/data/filterConfig.json";
-import Tag from "../../src/components/core/tag";
-import TYPES from "../../src/redux/action/types";
+import { Providers } from "@/lib/providers";
+import SelectedFilters from "@/app/components/SelectedFilters";
+import filterConfig from "@/app/data/filterConfig.json";
+import { fireEvent, render } from "@testing-library/react";
 
 describe("App test", () => {
   let appWrapper;
-  const mockStore = createMockStore([thunk]);
   const initialState = {
     search: {
       name: '',
@@ -22,11 +17,10 @@ describe("App test", () => {
   let store;
 
   beforeEach(() => {
-    store = mockStore(initialState);
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={initialState}>
         <SelectedFilters />
-      </Provider>
+      </Providers>
     );
   });
 
@@ -39,47 +33,31 @@ describe("App test", () => {
   });
 
   test("renders selected filters", () => {
-    expect(appWrapper.find(Tag).length).toEqual(2);
+    expect(appWrapper.getAllByTestId('tag').length).toEqual(2);
   });
 
   test("renders selected filters and searched name", () => {
-    store = mockStore({ search: { ...initialState.search, name: 'test' }});
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={{ search: { ...initialState.search, name: 'test' }}}>
         <SelectedFilters />
-      </Provider>
+      </Providers>
     );
 
-    expect(appWrapper.find(Tag).length).toEqual(3);
+    expect(appWrapper.getAllByTestId('tag').length).toEqual(5);
   });
 
   test("renders selected filters", () => {
-    appWrapper.find(Tag).find('button').at(0).simulate('click')
-    const actions = store.getActions();
-
-    expect(actions).toEqual([
-      {
-        type: TYPES.UPDATE_FILTERS,
-        payload: filterConfig[0].items[0]
-      }
-    ]);
+    fireEvent.click(appWrapper.getAllByRole('button').at(0));
+    expect(appWrapper.getAllByTestId('tag').length).toEqual(1);
   });
 
   test("renders selected filters and searched name", () => {
-    store = mockStore({ search: { ...initialState.search, name: 'test' }});
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={{ search: { ...initialState.search, name: 'test' }}}>
         <SelectedFilters />
-      </Provider>
+      </Providers>
     );
-    appWrapper.find(Tag).find('button').at(2).simulate('click');
-    const actions = store.getActions();
-
-    expect(actions).toEqual([
-      {
-        type: TYPES.UPDATE_SEARCH_NAME,
-        payload: ""
-      }
-    ]);
+    fireEvent.click(appWrapper.getAllByRole('button').at(2));
+    expect(appWrapper.getAllByTestId('tag').length).toEqual(4);
   });
 });

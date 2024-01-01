@@ -1,13 +1,9 @@
 import React from "react";
-import { mount } from "enzyme";
-import createMockStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import Header from "../../src/components/header";
-
+import Header from "@/app/components/Header";
+import { render } from "@testing-library/react";
+import { Providers } from "@/lib/providers";
 describe("App test", () => {
   let appWrapper;
-  const mockStore = createMockStore([thunk]);
   const initialState = {
     search: {
       name: '',
@@ -19,11 +15,10 @@ describe("App test", () => {
   let store;
 
   beforeEach(() => {
-    store = mockStore(initialState);
-    appWrapper = mount(
-      <Provider store={store}>
+    appWrapper = render(
+      <Providers preloadedState={initialState}>
         <Header />
-      </Provider>
+      </Providers>
     );
   });
 
