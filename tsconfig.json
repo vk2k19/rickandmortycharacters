@@ -49,7 +49,7 @@
     "app/api/filters/route.js",
     "lib/redux/store.js",
     "dist/types/**/*.ts"
-  ],
+, "__test__/page.spec.js"  ],
   "exclude": [
     "node_modules"
   ]
