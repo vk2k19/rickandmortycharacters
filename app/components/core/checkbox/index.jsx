@@ -1,7 +1,5 @@
-let checkboxCount = 0;
-
 export default function Checkbox(props) {
-  const id = `checkbox-${checkboxCount++}`;
+  const id = `checkbox-${props.id}`;
 
   const onChange = (event) => {
     if (props.onChange && props.onChange instanceof Function) {

@@ -7,7 +7,8 @@
       "excludes": [],
       "label": "Human",
       "category": "species",
-      "selected": true
+      "selected": true,
+      "value": "human"
     },
     {
       "id": "mytholog",
@@ -15,15 +16,17 @@
       "excludes": [],
       "includes": ["mytholog"],
       "category": "species",
-      "selected": false
+      "selected": false,
+      "value": "mytholog"
     },
     {
-      "id": "",
+      "id": "other-species",
       "includes": [],
       "excludes": ["human", "mytholog"],
       "label": "Other species...",
       "category": "species",
-      "selected": false
+      "selected": false,
+      "value": "other-species"
     }]
 },
 {
@@ -35,7 +38,8 @@
       "includes": ["male"],
       "excludes": [],
       "category": "gender",
-      "selected": false
+      "selected": false,
+      "value": "male"
     },
     {
       "id": "female",
@@ -43,7 +47,8 @@
       "includes": ["female"],
       "excludes": [],
       "category": "gender",
-      "selected": true
+      "selected": true,
+      "value": "female"
     }]
 },
 {
@@ -55,7 +60,8 @@
       "includes": ["unknown"],
       "excludes": [],
       "category": "origin",
-      "selected": false
+      "selected": false,
+      "value": "unknown"
     },
     {
       "id": "post-apocalyptic earth",
@@ -63,7 +69,8 @@
       "includes": ["post-apocalyptic earth"],
       "excludes": [],
       "category": "origin",
-      "selected": false
+      "selected": false,
+      "value": "post-apocalyptic earth"
     },
     {
       "id": "nuptia 4",
@@ -71,15 +78,17 @@
       "includes": ["nuptia 4"],
       "excludes": [],
       "category": "origin",
-      "selected": false
+      "selected": false,
+      "value": "nuptia 4"
     },
     {
-      "id": "",
+      "id": "origin",
       "category": "origin",
       "includes": [],
       "excludes": ["unknown", "post-apocalyptic earth", "nuptia 4"],
       "label": "Other origins...",
-      "selected": false
+      "selected": false,
+      "value": "origin..."
     }
   ]
 }]

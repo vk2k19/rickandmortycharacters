@@ -12,7 +12,7 @@ export default function Dropdown(props) {
 
   return <>
     <div className="form-inline" data-testid="dropdown">
-      <label htmlFor="props.id">{props.label}</label>
+      <label htmlFor={props.id}>{props.label}</label>
       <br />
       <select ref={selectRef} className="form-control" name={props.name} id={props.id} onChange={onChange} value={props.value} data-testid="select-dropdown">
         {props.options && props.options.map(option =>
