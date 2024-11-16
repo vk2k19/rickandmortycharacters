@@ -29,7 +29,9 @@ const Filter = () => {
   }, []);
 
   useEffect(() => {
-    toggleAccordion(undefined, true);
+    if (window.screen.width > 568) {
+      toggleAccordion(undefined, true);
+    }
   }, [toggleAccordion]);
 
   return (
@@ -75,6 +77,10 @@ const Filter = () => {
         }
         .collapse.show {
           max-height: 325px;
+          transition: max-height 0.3s ease-in-out;
+          @media (min-width: 768px) {
+            max-height: 100% !important;
+          }
         }
       `}</style>
     </div>
