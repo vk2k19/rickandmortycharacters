@@ -7,18 +7,18 @@ describe("App test", () => {
   let appWrapper;
   const initialState = {
     search: {
-      name: '',
+      name: "",
       filters: [],
       sortBy: {},
-      results: []
-    }
+      results: [],
+    },
   };
 
   beforeEach(() => {
     appWrapper = render(
       <Providers preloadedState={initialState}>
         <App />
-      </Providers>
+      </Providers>,
     );
   });
 
@@ -31,15 +31,21 @@ describe("App test", () => {
   });
 
   test("renders filters screen", () => {
-    waitFor(() => expect(appWrapper.getByTestId('filters').length).toEqual(1));
+    waitFor(() => expect(appWrapper.getByTestId("filters").length).toEqual(1));
   });
   test("renders results", () => {
-    waitFor(() =>expect(appWrapper.getByTestId('search-results').length).toEqual(1));
+    waitFor(() =>
+      expect(appWrapper.getByTestId("search-results").length).toEqual(1),
+    );
   });
   test("renders selected filters", () => {
-    waitFor(() => expect(appWrapper.getByTestId('selected-filters').length).toEqual(1));
+    waitFor(() =>
+      expect(appWrapper.getByTestId("selected-filters").length).toEqual(1),
+    );
   });
   test("renders search ad sorting", () => {
-    waitFor(() => expect(appWrapper.getByTestId('searchbar').length).toEqual(1));
+    waitFor(() =>
+      expect(appWrapper.getByTestId("searchbar").length).toEqual(1),
+    );
   });
 });

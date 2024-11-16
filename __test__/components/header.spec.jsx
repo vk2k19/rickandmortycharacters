@@ -6,11 +6,11 @@ describe("App test", () => {
   let appWrapper;
   const initialState = {
     search: {
-      name: '',
+      name: "",
       filters: [],
       sortBy: {},
-      results: []
-    }
+      results: [],
+    },
   };
   let store;
 
@@ -18,7 +18,7 @@ describe("App test", () => {
     appWrapper = render(
       <Providers preloadedState={initialState}>
         <Header />
-      </Providers>
+      </Providers>,
     );
   });
 

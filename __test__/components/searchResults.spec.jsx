@@ -7,18 +7,18 @@ import { Providers } from "@/lib/providers";
 describe("App test", () => {
   const initialState = {
     search: {
-      name: '',
+      name: "",
       filters: filterConfig,
       sortBy: {},
-      results: []
-    }
+      results: [],
+    },
   };
 
   test("renders without crashing", () => {
     const appWrapper = render(
       <Providers preloadedState={initialState}>
         <SearchReults />
-      </Providers>
+      </Providers>,
     );
     expect(appWrapper).not.toBe(null);
   });
@@ -27,48 +27,66 @@ describe("App test", () => {
     const appWrapper = render(
       <Providers preloadedState={initialState}>
         <SearchReults />
-      </Providers>
+      </Providers>,
     );
-    expect(appWrapper.queryByTestId('search-results')).toBeNull();
+    expect(appWrapper.queryByTestId("search-results")).toBeNull();
   });
 
   test("renders provided results", () => {
     const appWrapper = render(
-      <Providers preloadedState={{ search: { ...initialState.search, results: mockData }}}>
+      <Providers
+        preloadedState={{
+          search: { ...initialState.search, results: mockData },
+        }}
+      >
         <SearchReults />
-      </Providers>
+      </Providers>,
     );
 
-    waitFor(() => expect(appWrapper.getByTestId('search-results').length).toEqual(1));
+    waitFor(() =>
+      expect(appWrapper.getByTestId("search-results").length).toEqual(1),
+    );
   });
 
   test("Results renders all cards", () => {
     const appWrapper = render(
-      <Providers preloadedState={{ search: { ...initialState.search, results: mockData, filters: [] }}}>
+      <Providers
+        preloadedState={{
+          search: { ...initialState.search, results: mockData, filters: [] },
+        }}
+      >
         <SearchReults />
-      </Providers>
+      </Providers>,
     );
 
-    waitFor(() =>expect(appWrapper.getByTestId('card').length).toEqual(6));
+    waitFor(() => expect(appWrapper.getByTestId("card").length).toEqual(6));
   });
 
   test("Results renders cards", () => {
     const appWrapper = render(
-      <Providers preloadedState={{ search: { ...initialState.search, results: mockData }}}>
+      <Providers
+        preloadedState={{
+          search: { ...initialState.search, results: mockData },
+        }}
+      >
         <SearchReults />
-      </Providers>
+      </Providers>,
     );
 
-    waitFor(() => expect(appWrapper.getByTestId('card').length).toEqual(1));
+    waitFor(() => expect(appWrapper.getByTestId("card").length).toEqual(1));
   });
 
   test("renders filtered result based on name", () => {
     const appWrapper = render(
-      <Providers preloadedState={{ search: {...initialState.search, results: mockData, name: 'test'} }}>
+      <Providers
+        preloadedState={{
+          search: { ...initialState.search, results: mockData, name: "test" },
+        }}
+      >
         <SearchReults />
-      </Providers>
+      </Providers>,
     );
 
-    expect(appWrapper.queryByTestId('card')).toBeNull();
+    expect(appWrapper.queryByTestId("card")).toBeNull();
   });
 });

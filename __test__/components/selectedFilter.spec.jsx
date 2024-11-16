@@ -8,11 +8,11 @@ describe("App test", () => {
   let appWrapper;
   const initialState = {
     search: {
-      name: '',
+      name: "",
       filters: filterConfig,
       sortBy: {},
-      results: []
-    }
+      results: [],
+    },
   };
   let store;
 
@@ -20,7 +20,7 @@ describe("App test", () => {
     appWrapper = render(
       <Providers preloadedState={initialState}>
         <SelectedFilters />
-      </Providers>
+      </Providers>,
     );
   });
 
@@ -33,31 +33,35 @@ describe("App test", () => {
   });
 
   test("renders selected filters", () => {
-    expect(appWrapper.getAllByTestId('tag').length).toEqual(2);
+    expect(appWrapper.getAllByTestId("tag").length).toEqual(2);
   });
 
   test("renders selected filters and searched name", () => {
     appWrapper = render(
-      <Providers preloadedState={{ search: { ...initialState.search, name: 'test' }}}>
+      <Providers
+        preloadedState={{ search: { ...initialState.search, name: "test" } }}
+      >
         <SelectedFilters />
-      </Providers>
+      </Providers>,
     );
 
-    expect(appWrapper.getAllByTestId('tag').length).toEqual(5);
+    expect(appWrapper.getAllByTestId("tag").length).toEqual(5);
   });
 
   test("renders selected filters", () => {
-    fireEvent.click(appWrapper.getAllByRole('button').at(0));
-    expect(appWrapper.getAllByTestId('tag').length).toEqual(1);
+    fireEvent.click(appWrapper.getAllByRole("button").at(0));
+    expect(appWrapper.getAllByTestId("tag").length).toEqual(1);
   });
 
   test("renders selected filters and searched name", () => {
     appWrapper = render(
-      <Providers preloadedState={{ search: { ...initialState.search, name: 'test' }}}>
+      <Providers
+        preloadedState={{ search: { ...initialState.search, name: "test" } }}
+      >
         <SelectedFilters />
-      </Providers>
+      </Providers>,
     );
-    fireEvent.click(appWrapper.getAllByRole('button').at(2));
-    expect(appWrapper.getAllByTestId('tag').length).toEqual(4);
+    fireEvent.click(appWrapper.getAllByRole("button").at(2));
+    expect(appWrapper.getAllByTestId("tag").length).toEqual(4);
   });
 });

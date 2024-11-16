@@ -19,7 +19,7 @@ describe("Page test", () => {
     appWrapper = render(
       <Providers preloadedState={initialState}>
         <Page />
-      </Providers>
+      </Providers>,
     );
   });
 

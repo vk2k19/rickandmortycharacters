@@ -7,18 +7,18 @@ describe("App test", () => {
   let appWrapper;
   const initialState = {
     search: {
-      name: '',
+      name: "",
       filters: [],
       sortBy: {},
-      results: []
-    }
+      results: [],
+    },
   };
 
   beforeEach(() => {
     appWrapper = render(
       <Providers preloadedState={initialState}>
         <Footer />
-      </Providers>
+      </Providers>,
     );
   });
 

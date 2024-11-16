@@ -3,16 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "target": "ESNext",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -48,9 +42,8 @@
     "app/api/sort-options/route.js",
     "app/api/filters/route.js",
     "lib/redux/store.js",
-    "dist/types/**/*.ts"
-, "__test__/page.spec.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "dist/types/**/*.ts",
+    "__test__/page.spec.js"
+  ],
+  "exclude": ["node_modules"]
 }

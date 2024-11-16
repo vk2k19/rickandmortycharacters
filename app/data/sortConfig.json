@@ -1,10 +1,10 @@
 {
   "label": "Sort by Id:",
-  "options": [{
+  "options": [
+    {
       "id": "Ascending",
       "label": "Ascending",
       "selected": true
-
     },
     {
       "id": "Descending",

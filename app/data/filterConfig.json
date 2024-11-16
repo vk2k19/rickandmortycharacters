@@ -1,94 +1,101 @@
-[{
-  "id": "species",
-  "label": "Species",
-  "items": [{
-      "id": "human",
-      "includes": ["human"],
-      "excludes": [],
-      "label": "Human",
-      "category": "species",
-      "selected": true,
-      "value": "human"
-    },
-    {
-      "id": "mytholog",
-      "label": "Mytholog",
-      "excludes": [],
-      "includes": ["mytholog"],
-      "category": "species",
-      "selected": false,
-      "value": "mytholog"
-    },
-    {
-      "id": "other-species",
-      "includes": [],
-      "excludes": ["human", "mytholog"],
-      "label": "Other species...",
-      "category": "species",
-      "selected": false,
-      "value": "other-species"
-    }]
-},
-{
-  "id": "gender",
-  "label": "Gender",
-  "items": [{
-      "id": "male",
-      "label": "Male",
-      "includes": ["male"],
-      "excludes": [],
-      "category": "gender",
-      "selected": false,
-      "value": "male"
-    },
-    {
-      "id": "female",
-      "label": "Female",
-      "includes": ["female"],
-      "excludes": [],
-      "category": "gender",
-      "selected": true,
-      "value": "female"
-    }]
-},
-{
-  "id": "origin",
-  "label": "Origin",
-  "items": [{
-      "id": "unknown",
-      "label": "Unknown",
-      "includes": ["unknown"],
-      "excludes": [],
-      "category": "origin",
-      "selected": false,
-      "value": "unknown"
-    },
-    {
-      "id": "post-apocalyptic earth",
-      "label": "Post-Apocalyptic Earth",
-      "includes": ["post-apocalyptic earth"],
-      "excludes": [],
-      "category": "origin",
-      "selected": false,
-      "value": "post-apocalyptic earth"
-    },
-    {
-      "id": "nuptia 4",
-      "label": "Nuptia 4",
-      "includes": ["nuptia 4"],
-      "excludes": [],
-      "category": "origin",
-      "selected": false,
-      "value": "nuptia 4"
-    },
-    {
-      "id": "origin",
-      "category": "origin",
-      "includes": [],
-      "excludes": ["unknown", "post-apocalyptic earth", "nuptia 4"],
-      "label": "Other origins...",
-      "selected": false,
-      "value": "origin..."
-    }
-  ]
-}]
+[
+  {
+    "id": "species",
+    "label": "Species",
+    "items": [
+      {
+        "id": "human",
+        "includes": ["human"],
+        "excludes": [],
+        "label": "Human",
+        "category": "species",
+        "selected": true,
+        "value": "human"
+      },
+      {
+        "id": "mytholog",
+        "label": "Mytholog",
+        "excludes": [],
+        "includes": ["mytholog"],
+        "category": "species",
+        "selected": false,
+        "value": "mytholog"
+      },
+      {
+        "id": "other-species",
+        "includes": [],
+        "excludes": ["human", "mytholog"],
+        "label": "Other species...",
+        "category": "species",
+        "selected": false,
+        "value": "other-species"
+      }
+    ]
+  },
+  {
+    "id": "gender",
+    "label": "Gender",
+    "items": [
+      {
+        "id": "male",
+        "label": "Male",
+        "includes": ["male"],
+        "excludes": [],
+        "category": "gender",
+        "selected": false,
+        "value": "male"
+      },
+      {
+        "id": "female",
+        "label": "Female",
+        "includes": ["female"],
+        "excludes": [],
+        "category": "gender",
+        "selected": true,
+        "value": "female"
+      }
+    ]
+  },
+  {
+    "id": "origin",
+    "label": "Origin",
+    "items": [
+      {
+        "id": "unknown",
+        "label": "Unknown",
+        "includes": ["unknown"],
+        "excludes": [],
+        "category": "origin",
+        "selected": false,
+        "value": "unknown"
+      },
+      {
+        "id": "post-apocalyptic earth",
+        "label": "Post-Apocalyptic Earth",
+        "includes": ["post-apocalyptic earth"],
+        "excludes": [],
+        "category": "origin",
+        "selected": false,
+        "value": "post-apocalyptic earth"
+      },
+      {
+        "id": "nuptia 4",
+        "label": "Nuptia 4",
+        "includes": ["nuptia 4"],
+        "excludes": [],
+        "category": "origin",
+        "selected": false,
+        "value": "nuptia 4"
+      },
+      {
+        "id": "origin",
+        "category": "origin",
+        "includes": [],
+        "excludes": ["unknown", "post-apocalyptic earth", "nuptia 4"],
+        "label": "Other origins...",
+        "selected": false,
+        "value": "origin..."
+      }
+    ]
+  }
+]

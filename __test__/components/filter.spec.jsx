@@ -19,7 +19,7 @@ describe("App test", () => {
     appWrapper = render(
       <Providers preloadedState={initialState}>
         <Filter />
-      </Providers>
+      </Providers>,
     );
   });
 
@@ -33,7 +33,7 @@ describe("App test", () => {
 
   test("renders various filter options", () => {
     expect(appWrapper.getAllByTestId("filter-options").length).toEqual(
-      filterConfig.length
+      filterConfig.length,
     );
   });
 
@@ -44,7 +44,7 @@ describe("App test", () => {
       },
     });
     expect(appWrapper.getAllByTestId("filter-options").length).toEqual(
-      filterConfig.length
+      filterConfig.length,
     );
   });
 });

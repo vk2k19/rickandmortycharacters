@@ -1,23 +1,26 @@
-import Checkbox from '@/app/components/core/checkbox';
+"use client";
+import Checkbox from "@/app/components/core/checkbox";
 
-export default function Filter (props) {
+export default function Filter(props) {
   const onChange = (payload) => {
-    if(props.onChange) {
+    if (props.onChange) {
       props.onChange(payload);
     }
-  }
-  return <div className="col-auto flex-grow-1 border border-light p-3 rounded"  data-testid="filter-options">
+  };
+  return (
+    <div
+      className="col-auto flex-grow-1 border border-light p-3 rounded"
+      data-testid="filter-options"
+    >
       <h3>{props.title}</h3>
-      {
-        props.items.map(
-          item => 
-          <Checkbox
-            key={item.id}
-            onChange={() => onChange(item)}
-            {...item}
-            name={props.name}
-           />
-        )
-      }
+      {props.items.map((item) => (
+        <Checkbox
+          key={item.id}
+          onChange={() => onChange(item)}
+          {...item}
+          name={props.name}
+        />
+      ))}
     </div>
+  );
 }

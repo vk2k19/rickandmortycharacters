@@ -8,11 +8,11 @@ describe("App test", () => {
   let appWrapper;
   const initialState = {
     search: {
-      name: '',
+      name: "",
       filters: [],
       sortBy: sortBy,
-      results: []
-    }
+      results: [],
+    },
   };
   let store;
 
@@ -20,7 +20,7 @@ describe("App test", () => {
     appWrapper = render(
       <Providers preloadedState={initialState}>
         <SearchAndSortBar />
-      </Providers>
+      </Providers>,
     );
   });
 
@@ -42,22 +42,26 @@ describe("App test", () => {
   });
 
   test("triggers change in dropdown selection action", () => {
-    fireEvent.change(appWrapper.getByTestId('select-dropdown'), {
+    fireEvent.change(appWrapper.getByTestId("select-dropdown"), {
       target: {
-        value: 'Descending'
-      }
-    })
-    expect(appWrapper.getAllByTestId('select-dropdown').at(0).value).toEqual('Descending');
+        value: "Descending",
+      },
+    });
+    expect(appWrapper.getAllByTestId("select-dropdown").at(0).value).toEqual(
+      "Descending",
+    );
   });
 
   test("renders change in search and submit triggers update Search string action", () => {
     appWrapper = render(
-      <Providers preloadedState={{ search: { ...initialState.search }}}>
+      <Providers preloadedState={{ search: { ...initialState.search } }}>
         <SearchAndSortBar />
-      </Providers>
+      </Providers>,
     );
-    fireEvent.change(appWrapper.getAllByTestId('search-query').at(0), { target: { value: 'test' }});
-    fireEvent.submit(appWrapper.getAllByRole('button').at(0));
-    expect(appWrapper.getAllByTestId('search-query').at(0).value).toEqual('');
+    fireEvent.change(appWrapper.getAllByTestId("search-query").at(0), {
+      target: { value: "test" },
+    });
+    fireEvent.submit(appWrapper.getAllByRole("button").at(0));
+    expect(appWrapper.getAllByTestId("search-query").at(0).value).toEqual("");
   });
 });

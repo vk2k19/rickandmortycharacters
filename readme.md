@@ -26,22 +26,22 @@ Updated code with
 
 ## Running Application
 
-- Use development mode via ```npm run dev```
-- To create production ready code use ```npm run build```
-- To run already created production ready code use command ```npm run start```
-- To test code coverage use command ```npm run test:cover```
+- Use development mode via `npm run dev`
+- To create production ready code use `npm run build`
+- To run already created production ready code use command `npm run start`
+- To test code coverage use command `npm run test:cover`
 
 ## Attribution is being given to
 
-- ```https://fontawesome.com/``` for free SVG icons
-- ```http://subtlepatterns.com``` for patterns
-- ```bootstrap for custom css```
+- `https://fontawesome.com/` for free SVG icons
+- `http://subtlepatterns.com` for patterns
+- `bootstrap for custom css`
 
 ## App view
 
-| Small  | Large |
-:--------------:|:-----------------:
-![mobile view](/docs/mobileThumbnail.png) |  ![desktop view](/docs/desktopThumbnail.png)
+|                   Small                   |                    Large                    |
+| :---------------------------------------: | :-----------------------------------------: |
+| ![mobile view](/docs/mobileThumbnail.png) | ![desktop view](/docs/desktopThumbnail.png) |
 
 ## coverage
 
