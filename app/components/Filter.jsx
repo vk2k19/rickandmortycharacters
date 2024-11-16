@@ -16,7 +16,7 @@ const Filter = () => {
     (payload) => {
       dispatch(updateFilters(payload));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const toggleAccordion = useCallback((e, forceHide = false) => {

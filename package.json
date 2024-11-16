@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --runInBand",
-    "lint": "next lint && prettier --check ."
+    "lint": "next lint && prettier --check .",
+    "lint-fix": "next lint --fix && prettier --write ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",

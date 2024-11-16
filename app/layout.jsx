@@ -15,13 +15,13 @@ export default async function RootLayout(props) {
     process.cwd(),
     "app",
     "data",
-    "filterConfig.json"
+    "filterConfig.json",
   );
   const sortConfigFile = path.join(
     process.cwd(),
     "app",
     "data",
-    "sortConfig.json"
+    "sortConfig.json",
   );
   const filterConfig = fs.readFileSync(filterConfigFile, "utf8");
   const sortConfig = fs.readFileSync(sortConfigFile, "utf8");
