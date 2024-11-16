@@ -7,8 +7,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 /* Instruments */
-import "@/app/styles/bootstrap-5.3.3/bootstrap-reboot.min.css";
-import "@/app/styles/bootstrap-5.3.3/bootstrap.min.css";
+import "@/app/styles/bootstrap.min.css";
 import { getCharacters } from '@/lib/redux/slices/thunks';
 
 export default async function RootLayout(props) {

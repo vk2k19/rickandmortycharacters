@@ -9,11 +9,12 @@ const Results = () => {
 
   return <div className="row g-0 flex-grow-1 bg-black p-2 rounded-2 row-cols-xxl-5" data-testid="search-results">
     {results.map((option) =>
-      <div className="col-sm-6 col-lg-4 col-xl-3 col-xxl-0 p-2">
+      <div 
+        key={`${option.id}-${option.name}`}
+        className="col-sm-6 col-lg-4 col-xl-3 col-xxl-0 p-2"
+      >
         <Card
           { ...option }
-          key={`${option.id}-${option.name}`}
-
         />
       </div>
     )}
