@@ -9,18 +9,10 @@ export default function Checkbox(props) {
     }
   }
 
-  return <>
-    <div className="form-checkbox"  data-testid="checkbox">
+  return <div className="form-checkbox row"  data-testid="checkbox">
       <div className="checkbox-inline">
       <input type="checkbox" className="form-check-input" name={props.name} id={id} onChange={onChange} value={props.value} checked={props.selected}></input>
-      <label htmlFor={id} className="form-check-label"> {props.label}</label>
+      <label htmlFor={id} className="form-check-label ps-1"> {props.label}</label>
       </div>
-    </div>
-    <style jsx>{
-      `.form-checkbox {
-        margin: 0;
-        padding: 0 0 1rem;
-      }`
-    }</style>
-  </>;
+    </div>;
 }

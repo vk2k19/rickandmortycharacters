@@ -16,7 +16,7 @@ const SearchAndSort = () => {
   }, [dispatch])
 
   return <>
-    <div className="row searchbar" data-testid="searchbar">
+    <div className="row px-0" data-testid="searchbar">
       <div className="col-md-8">
         <Search
           onSubmit={onSubmit}
@@ -26,7 +26,7 @@ const SearchAndSort = () => {
         <Dropdown {...sortBy} onChange={onChange} />
       </div>
     </div>
-    <style jsx> {
+    {/* <style jsx> {
       `
       @media (max-width: 991px) {
         .col-md-4 {
@@ -43,7 +43,7 @@ const SearchAndSort = () => {
       }
       `
     }
-    </style>
+    </style> */}
   </>
 }
 

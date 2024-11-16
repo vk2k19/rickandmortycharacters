@@ -7,8 +7,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 /* Instruments */
-import "@/app/styles/bootstrap.css";
-import "@/app/styles/globals.css";
+import "@/app/styles/bootstrap-5.3.3/bootstrap-reboot.min.css";
+import "@/app/styles/bootstrap-5.3.3/bootstrap.min.css";
 import { getCharacters } from '@/lib/redux/slices/thunks';
 
 export default async function RootLayout(props) {
@@ -26,7 +26,9 @@ export default async function RootLayout(props) {
         <body>
           <section className="container-fluid">
             <Header />
-            <main>{props.children}</main>
+            <main className="row p-3 gap-4 gap-md-0 bg-dark text-white" data-testid="main">
+              {props.children}
+            </main>
           </section>
           <Footer />
         </body>

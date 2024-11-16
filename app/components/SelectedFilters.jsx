@@ -19,33 +19,31 @@ const SelectedFilter = () =>  {
     dispatch(updateFilters(payload))
   }, [dispatch])
 
-  return <div className="row">
-    <div className="col-md-12 selected-filters" data-testid="selected-filters">
-        <h2>Selected Filters</h2>
-        <div className="selecte-filter-lists">
-          {selectedFilters
-            .map(item => <Tag
-              key={item.id}
-              label={item.label}
-              onClick={ (evt) => dispatchUpdateFilters(item)}
-              id={item.id}
-              category={item.category}
-             />
-           )}
-           {name &&
-             <Tag
-              id={name}
-              label={name}
-              onClick={dispatchUpdateSearchString}
-              category={'name'}
-             />
-           }
-           { !hasFilter &&
-              <p>No Filters applied</p>
-           }
-        </div>
-      </div>
+  return <div className="row flex-column flex-grow-1" data-testid="selected-filters">
+    <h2 className='p-0'>Selected Filters</h2>
+    <div className="row gap-2" data-testid="selecte-filter-lists">
+      {selectedFilters
+        .map(item => <Tag
+          key={item.id}
+          label={item.label}
+          onClick={ (evt) => dispatchUpdateFilters(item)}
+          id={item.id}
+          category={item.category}
+          />
+        )}
+        {name &&
+          <Tag
+          id={name}
+          label={name}
+          onClick={dispatchUpdateSearchString}
+          category={'name'}
+          />
+        }
+        { !hasFilter &&
+          <p className='m-0'>No Filters applied</p>
+        }
     </div>
+  </div>
 }
 
 export default SelectedFilter;

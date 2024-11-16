@@ -6,12 +6,12 @@ export default function Filter (props) {
       props.onChange(payload);
     }
   }
-  return <>
-    <div className="filter-options"  data-testid="filter-options">
+  return <div className="col-auto flex-grow-1 border border-light py-3 rounded"  data-testid="filter-options">
       <h3>{props.title}</h3>
       {
         props.items.map(
-          item => <Checkbox
+          item => 
+          <Checkbox
             key={item.id}
             onChange={() => onChange(item)}
             {...item}
@@ -20,16 +20,4 @@ export default function Filter (props) {
         )
       }
     </div>
-    <style jsx>{
-      `.filter-options {
-        border: 1px solid #222;
-        margin-bottom: 2rem;
-        padding: 1rem;
-      }
-      .filter-options h3 {
-        margin-top: 0;
-      }
-      `
-    }</style>
-  </>
 }

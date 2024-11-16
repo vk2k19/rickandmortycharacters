@@ -15,46 +15,31 @@ const Filter = () => {
     dispatch(updateFilters(payload))
   }, [dispatch])
 
-  return <>
-    <div className="filters" data-testid="filters">
-      <div className="row">
-        <h2 className="col-xs-10 col-md-12">Filters</h2>
-        <button className="col-xs-2 hidden-md hidden-lg" onClick={() => setHidden(!isHidden)}>
+  return <div data-testid="filters">
+      <div className="row align-items-center justify-content-between mb-2 gap-4">
+        <h2 className="col-auto m-0 p-0">Filters</h2>
+        <button className="col-auto hidden-md hidden-lg border-0 bg-white text-dark p-0" onClick={() => setHidden(!isHidden)}>
           <Image
+            aria-label={isHidden ? 'show filter options' : 'hide filter options'}
             src={`/rickandmortycharacters/assets/images/svgs/${isHidden ? 'plus' : 'minus'}-circle-solid.svg`}
-            alt={isHidden ? 'show filter options' : 'hide filter options'} 
+            alt={isHidden ? '+' : '-'} 
             width={32} height={32} 
           />
         </button>
       </div>
-      {filters.map(option =>
-        <div className={isHidden ? 'hidden-xs' : ''}   key={option.id}>
-          <FilterOptions
-            title={option.label}
-            items={option.items}
-            name={option.id}
-            onChange={dispatchUpdateFilters}
-          />
-         </div>
-      )}
-    </div>
-    <style jsx> {
-      ` .row {
-        padding-bottom: 0;
-      }
-      button {
-        margin-top: 22px;
-        margin-bottom: 10px;
-        background: none;
-        border: none;
-      }
-      button  img {
-        width: 23px;
-      }
-      `
-    }
-    </style>
-  </>;
+      <div className='row gap-3'>
+        {filters.map(option =>
+            <FilterOptions
+              key={option.id}
+              title={option.label}
+              items={option.items}
+              name={option.id}
+              onChange={dispatchUpdateFilters}
+              className={isHidden ? 'd-none' : ''}
+            />
+        )}
+      </div>
+    </div>;
 }
 
 export default Filter;
