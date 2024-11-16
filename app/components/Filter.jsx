@@ -18,7 +18,7 @@ const Filter = () => {
   return <div className='row g-0 gap-3' data-testid="filters">
       <div className="row g-0 align-items-center justify-content-between gap-3">
         <h2 className="col-auto m-0">Filters</h2>
-        <button className="col-auto hidden-md hidden-lg border-0 bg-white text-dark p-0" onClick={() => setHidden(!isHidden)}>
+        <button className="col-auto d-md-none border bg-white text-dark p-0 rounded-circle object-fit-cover" onClick={() => setHidden(!isHidden)}>
           <Image
             aria-label={isHidden ? 'show filter options' : 'hide filter options'}
             src={`/rickandmortycharacters/assets/images/svgs/${isHidden ? 'plus' : 'minus'}-circle-solid.svg`}
@@ -27,7 +27,7 @@ const Filter = () => {
           />
         </button>
       </div>
-      <div className='row g-0 gap-3'>
+      <div className={`row g-0 gap-3 ${isHidden ? 'd-none d-md-flex' : ''}`}>
         {filters.map(option =>
             <FilterOptions
               key={option.id}
@@ -35,7 +35,6 @@ const Filter = () => {
               items={option.items}
               name={option.id}
               onChange={dispatchUpdateFilters}
-              className={isHidden ? 'd-none' : ''}
             />
         )}
       </div>
