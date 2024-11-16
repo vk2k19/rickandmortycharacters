@@ -13,55 +13,22 @@ const getCreationText = date => {
   } else {
     return `created: this year`;
   }
-
 };
 
 
 const Card  = props => {
-  return <>
-    <div className="card" data-testid="card">
-      <figure className="card-img-title">
-        <Img alt={props.name} image={props.image} />
-        <figcaption className="card-title-wrapper">
-          <h2 className="card-title">{props.name}</h2>
-          <span className="card-id">id: {props.id}</span> - <span className="card-date">{getCreationText(props.created)}</span>
+  return <div className={`card bg-dark bg-gradient rounded-2 border-secondary overflow-hidden h-100 ${props.className}`} data-testid="card">
+      <figure className="position-relative m-0" data-testid="card-img-title">
+        <Img className='h-auto w-100' alt={props.name} image={props.image} />
+        <figcaption className="position-absolute bottom-0 pt-3 rounded-top-5 text-center bg-black-opacity text-white w-100" data-testid="card-title-wrapper">
+          <h2 className='m-0 h4' data-testid="card-title">{props.name}</h2>
+          <span data-testid="card-id">id: {props.id}</span> - <span className="card-date">{getCreationText(props.created)}</span>
         </figcaption>
       </figure>
       <DetailTable
         {...props}
       />
     </div>
-    <style jsx>{`
-      .card {
-        padding-bottom: 20px;
-        border-radius: 5px;
-        background: #333;
-        overflow: hidden;
-        height: 100%;
-      }
-      @media (min-width: 992px) {
-        .card {
-          border-radius: 10px;
-        }
-      }
-      .card-img-title {
-        position: relative;
-      }
-      .card-title-wrapper {
-        padding: 10px;
-        position: absolute;
-        bottom: 0;
-        background: rgba(0, 0, 0, .5);
-        width: 100%;
-        color: #fff;
-      }
-      .card-title {
-        font-size: 1.75rem;
-        margin: 5px 0;
-      }
-      `}
-    </style>
-  </>
 }
 
 export default Card;
