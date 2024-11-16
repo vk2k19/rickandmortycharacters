@@ -8,7 +8,7 @@ const Results = () => {
   const {results = []} = getFilteredResults(state)
 
   return <>
-    <div className="row-no-gutter search-results" data-testid="search-results">
+    <div className="row g-0 search-results" data-testid="search-results">
       {results.map((option, index) =>
         <div className="col-md-3 col-xs-6 card-wrapper" key={`${option.id}-${option.name}`}>
           <Card

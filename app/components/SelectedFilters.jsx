@@ -19,9 +19,9 @@ const SelectedFilter = () =>  {
     dispatch(updateFilters(payload))
   }, [dispatch])
 
-  return <div className="row flex-column flex-grow-1" data-testid="selected-filters">
+  return <div className="row g-0 flex-column flex-grow-1" data-testid="selected-filters">
     <h2 className='p-0'>Selected Filters</h2>
-    <div className="row gap-2" data-testid="selecte-filter-lists">
+    <div className="row g-0 gap-2" data-testid="selecte-filter-lists">
       {selectedFilters
         .map(item => <Tag
           key={item.id}

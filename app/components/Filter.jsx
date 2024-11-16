@@ -15,9 +15,9 @@ const Filter = () => {
     dispatch(updateFilters(payload))
   }, [dispatch])
 
-  return <div data-testid="filters">
-      <div className="row align-items-center justify-content-between mb-2 gap-4">
-        <h2 className="col-auto m-0 p-0">Filters</h2>
+  return <div className='row g-0 gap-3' data-testid="filters">
+      <div className="row g-0 align-items-center justify-content-between gap-3">
+        <h2 className="col-auto m-0">Filters</h2>
         <button className="col-auto hidden-md hidden-lg border-0 bg-white text-dark p-0" onClick={() => setHidden(!isHidden)}>
           <Image
             aria-label={isHidden ? 'show filter options' : 'hide filter options'}
@@ -27,7 +27,7 @@ const Filter = () => {
           />
         </button>
       </div>
-      <div className='row gap-3'>
+      <div className='row g-0 gap-3'>
         {filters.map(option =>
             <FilterOptions
               key={option.id}

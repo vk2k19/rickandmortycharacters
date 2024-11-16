@@ -1,8 +1,8 @@
 'use client'
 
 export default function Header () {
-  return <header className="row py-3 align-items-center justify-content-center" data-testid="header">
-      <div className="img col-auto bg-dark">
+  return <header className="row g-0 py-3 gap-2 align-items-center justify-content-center" data-testid="header">
+      <div className="img col-auto bg-dark rounded-3 ps-1 py-1">
         <img src="/rickandmortycharacters/assets/images/Rick.png" width="32" height="64" alt="" className="rick"/>
         <img src="/rickandmortycharacters/assets/images/Morty.png" width="32" height="64" alt="" className="morty"/>
       </div>
@@ -10,10 +10,6 @@ export default function Header () {
     <style jsx> {
       `.img {
         transform: rotate(-5deg);
-        padding-left: 4px;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        border-radius: 10px;
         overflow: hidden;
         min-width: 70px;
       }

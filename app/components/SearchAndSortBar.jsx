@@ -16,34 +16,16 @@ const SearchAndSort = () => {
   }, [dispatch])
 
   return <>
-    <div className="row px-0" data-testid="searchbar">
+    <div className="row g-0 gap-3" data-testid="searchbar">
       <div className="col-md-8">
         <Search
           onSubmit={onSubmit}
         />
       </div>
-      <div className="col-md-4">
+      <div className="col-md-auto flex-grow-1">
         <Dropdown {...sortBy} onChange={onChange} />
       </div>
     </div>
-    {/* <style jsx> {
-      `
-      @media (max-width: 991px) {
-        .col-md-4 {
-          margin-top: 2rem;
-        }
-        .col-md-4 .form-input {
-          width: 100%;
-        }
-      }
-      @media (min-width: 992px) {
-        .col-md-4 {
-          text-align: right;
-        }
-      }
-      `
-    }
-    </style> */}
   </>
 }
 

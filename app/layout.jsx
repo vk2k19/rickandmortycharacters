@@ -24,9 +24,9 @@ export default async function RootLayout(props) {
     <Providers preloadedState={{ search: { name: '', filters, sortBy, results: results }}}>
       <html lang="en">
         <body>
-          <section className="container-fluid">
+          <section className="container-fluid px-0 px-sm-3">
             <Header />
-            <main className="row p-3 gap-4 gap-md-0 bg-dark text-white" data-testid="main">
+            <main className="p-3 bg-dark text-white rounded-top" data-testid="main">
               {props.children}
             </main>
           </section>

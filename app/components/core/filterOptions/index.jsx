@@ -6,7 +6,7 @@ export default function Filter (props) {
       props.onChange(payload);
     }
   }
-  return <div className="col-auto flex-grow-1 border border-light py-3 rounded"  data-testid="filter-options">
+  return <div className="col-auto flex-grow-1 border border-light p-3 rounded"  data-testid="filter-options">
       <h3>{props.title}</h3>
       {
         props.items.map(
