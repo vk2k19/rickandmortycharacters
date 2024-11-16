@@ -16,7 +16,7 @@ const Filter = () => {
     (payload) => {
       dispatch(updateFilters(payload));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const toggleAccordion = useCallback((e, forceHide = false) => {
@@ -78,7 +78,9 @@ const Filter = () => {
         .collapse.show {
           max-height: 325px;
           transition: max-height 0.3s ease-in-out;
-          @media (min-width: 768px) {
+        }
+        @media (min-width: 768px) {
+          .collapse.show {
             max-height: 100% !important;
           }
         }
